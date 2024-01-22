@@ -16,10 +16,12 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(path) {
+  let text = path.split("/")
+  let sonIndex = text.length -1
+  return text[sonIndex]
 }
-
+console.log(dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3"));
 /*
   GÖREV 2
   - Input:  Bir sayı arrayini parametre olarak alacak bir fonksiyon oluştur.
@@ -38,9 +40,23 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(sayiArray) {
+  if (sayiArray.length === 0) {
+    return null;
+  } else {
+    const average = sayiArray.reduce((total, sayi) => total + sayi, 0) / sayiArray.length;
+    // let toplam = 0;
+    // sayiArray.forEach((item) => {
+    //   toplam += item                        VEYA BU YÖNTEM KULLANILABİLİR.
+    // })
+    // const average = toplam / sayiArray.length;
+    return Math.round(average);
+  }
 }
+console.log(ortalamaBul([4]));
+console.log(ortalamaBul([50, -26, 153, 7]));
+console.log(ortalamaBul([109, 216, 288, 143, 71, 185, -278, 194, 5]));
+console.log(ortalamaBul([]));
 
 /*
   GÖREV 3
@@ -61,10 +77,31 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek input:  [109, 216, 288, 143, 71, 185, -278, 194, 5]
   örnek output: [109, 216, 288, 143, 185, 194]
 */
+const sayi = [109, 216, 288, 143, 71, 185, -278, 194, 5]
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamadanBuyukleriBul(numbers, callback) {
+  // if(numbers.length == 0){
+  //   return null;
+  // }
+  // const bigger = [];
+  // const smaller = [];
+   const total = callback(numbers);
+  // for (let i = 0; i < numbers.length; i++) {
+  //   if (numbers[i] >= total) {
+  //     bigger.push(numbers[i]);
+  //   } else {
+  //     smaller.push(numbers[i]);
+  //   }
+  // }
+  // return bigger;
+  if (total === null) {
+    return null;
+  }
+  const bigger = numbers.filter((sayi) => sayi >= total);
+  return bigger;
 }
+// console.log(ortalamaBul(sayi));
+// console.log(ortalamadanBuyukleriBul(sayi, numbers));
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
